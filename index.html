@@ -3,9 +3,99 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>EazyTask</title>
   </head>
-  <body>
+  <body class="box-border font-['Plus_Jakarta_Sans']">
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      role="alert"
+      aria-live="assertive"
+      class="fixed top-5 right-5 px-4 py-2 rounded shadow-md hidden transition-opacity duration-500 z-50 text-white dark:text-gray-100"
+    ></div>
+
+    <!-- Main Container -->
+    <main
+      class="flex flex-col items-center justify-center min-h-screen bg-blue-400"
+    >
+      <section
+        class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-md transition-colors duration-300"
+        role="region"
+        aria-label="Task Manager"
+      >
+        <!-- App Title -->
+        <h1
+          class="text-2xl font-bold text-center mb-6 font-['Poppins'] text-blue-500"
+        >
+          EazyTask
+        </h1>
+
+        <!-- Task Form -->
+        <form id="taskForm" class="flex space-x-1" aria-label="Add new task">
+          <label for="taskInput" class="sr-only">Enter a task</label>
+          <input
+            type="text"
+            id="taskInput"
+            required
+            placeholder="What needs to be done?"
+            aria-required="true"
+            class="w-full p-2 border border-blue-400 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-center dark:bg-gray-700 dark:text-gray-200 dark:border-blue-600 dark:placeholder-gray-400"
+          />
+          <button
+            type="submit"
+            aria-label="Add Task"
+            class="w-[15%] bg-blue-400 text-white p-2 rounded hover:bg-blue-500 transition duration-200 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none focus-visible:ring-2 cursor-pointer"
+          >
+            <i class="ri-add-line" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <!-- Task List -->
+        <ul
+          id="taskList"
+          class="mt-6 mb-6 text-blue-500 text-lg space-y-2"
+          role="list"
+          aria-label="List of tasks"
+        ></ul>
+
+        <!-- Footer -->
+        <div class="flex space-x-4 justify-between">
+          <!-- Completed Count -->
+          <div
+            id="completed-tasks"
+            class="bg-green-400 dark:bg-green-700 p-2 rounded flex items-center text-white"
+            aria-live="polite"
+            role="status"
+          ></div>
+
+          <!-- Remove Checked Button -->
+          <button
+            id="remove-checked"
+            type="button"
+            class="bg-blue-400 dark:bg-blue-700 text-white p-2 rounded flex items-center cursor-pointer focus:outline-none focus-visible:ring-2"
+            aria-label="Remove all checked tasks"
+          >
+            Remove checked
+            <i class="ri-close-line ml-1" aria-hidden="true"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+
     <script src="script.js"></script>
   </body>
 </html>
